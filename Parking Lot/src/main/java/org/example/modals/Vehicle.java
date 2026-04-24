@@ -1,6 +1,6 @@
-package org.example.modals;
+package src.main.java.org.example.modals;
 
-import org.example.enums.VehicleType;
+import src.main.java.org.example.enums.VehicleType;
 
 public abstract class Vehicle {
     String vehicleNumber;
