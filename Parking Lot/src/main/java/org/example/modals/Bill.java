@@ -7,6 +7,6 @@ public record Bill (
         LocalDateTime exitTime,
         int fee) {
     public static Bill create(Ticket ticket){
-        return new Bill(ticket.entryTime(),ticket.exitTime(),ticket.fee());
+        return new Bill(ticket.entryTime,LocalDateTime.now(),ticket.parkingSpot.getPrize());
     }
 }

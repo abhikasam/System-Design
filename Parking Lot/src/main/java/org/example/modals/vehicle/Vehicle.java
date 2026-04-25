@@ -7,7 +7,7 @@ import src.main.java.org.example.enums.VehicleType;
 public abstract class Vehicle {
     String vehicleNumber;
     VehicleType vehicleType;
-    Vehicle(){}
+    public Vehicle(){}
     Vehicle(VehicleType vehicleType){
         this.vehicleType = vehicleType;
     }

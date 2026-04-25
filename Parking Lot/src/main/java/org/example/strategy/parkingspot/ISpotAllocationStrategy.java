@@ -6,5 +6,5 @@ import src.main.java.org.example.modals.vehicle.Vehicle;
 import java.util.List;
 
 public interface ISpotAllocationStrategy {
-    ParkingSpot allocate(Vehicle vehicle, List<ParkingSpot> parkingSpotList);
+    ParkingSpot findSpot(Vehicle vehicle, List<ParkingSpot> parkingSpotList);
 }

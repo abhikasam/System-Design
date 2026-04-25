@@ -2,20 +2,23 @@ package src.main.java.org.example.modals;
 
 import src.main.java.org.example.modals.ParkingSpot.ParkingSpot;
 import src.main.java.org.example.modals.vehicle.Vehicle;
+import src.main.java.org.example.services.ITicketService;
+import src.main.java.org.example.services.TicketService;
 import src.main.java.org.example.strategy.payment.IPaymentStrategy;
 import src.main.java.org.example.strategy.parkingspot.ISpotAllocationStrategy;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ParkingLot {
     ISpotAllocationStrategy spotAllocationStrategy;
-    IPaymentStrategy paymentStrategy;
     List<ParkingSpot> parkingSpots;
-    ParkingLot(ISpotAllocationStrategy spotAllocationStrategy,IPaymentStrategy paymentStrategy){
+    ParkingLot(ISpotAllocationStrategy spotAllocationStrategy){
         this.parkingSpots = new ArrayList<>();
         this.spotAllocationStrategy = spotAllocationStrategy;
-        this.paymentStrategy = paymentStrategy;
     }
     void addSpot(ParkingSpot parkingSpot){
         this.parkingSpots.add(parkingSpot);
@@ -25,19 +28,14 @@ public class ParkingLot {
         this.parkingSpots.remove(parkingSpot);
     }
 
-    Ticket issueTicket(Vehicle vehicle, ParkingSpot parkingSpot){
-        parkingSpot.allocate(vehicle);
-        return Ticket.issue(vehicle, parkingSpot);
-    }
-
-    public Ticket park(Vehicle vehicle) {
-        ParkingSpot parkingSpot = spotAllocationStrategy.allocate(vehicle, parkingSpots);
+    public ParkingSpot park(Vehicle vehicle) {
+        ParkingSpot parkingSpot = spotAllocationStrategy.findSpot(vehicle, parkingSpots);
         if(parkingSpot==null) throw new RuntimeException("No parking spot found");
-        return issueTicket(vehicle, parkingSpot);
+        parkingSpot.allocate(vehicle);
+        return parkingSpot;
     }
 
-    public Bill release(Ticket ticket){
-        ticket.parkingSpot().release();
-        return paymentStrategy.process(ticket);
+    public void release(ParkingSpot parkingSpot){
+        parkingSpot.release();
     }
 }

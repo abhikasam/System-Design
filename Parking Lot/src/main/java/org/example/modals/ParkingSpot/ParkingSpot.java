@@ -1,6 +1,7 @@
 package src.main.java.org.example.modals.ParkingSpot;
 
 import lombok.Data;
+import src.main.java.org.example.enums.ParkingSpotType;
 import src.main.java.org.example.enums.VehicleType;
 import src.main.java.org.example.modals.vehicle.Vehicle;
 
@@ -11,6 +12,7 @@ public abstract class ParkingSpot {
     String id;
     Vehicle vehicle;
     VehicleType vehicleType;
+    ParkingSpotType parkingSpotType;
     boolean isFree;
     int prize;
     ParkingSpot(){
