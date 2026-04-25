@@ -2,34 +2,35 @@ package src.main.java.org.example.modals;
 
 import src.main.java.org.example.modals.ParkingSpot.ParkingSpot;
 import src.main.java.org.example.modals.vehicle.Vehicle;
-import src.main.java.org.example.services.ITicketService;
-import src.main.java.org.example.services.TicketService;
-import src.main.java.org.example.strategy.payment.IPaymentStrategy;
 import src.main.java.org.example.strategy.parkingspot.ISpotAllocationStrategy;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ParkingLot {
     ISpotAllocationStrategy spotAllocationStrategy;
-    List<ParkingSpot> parkingSpots;
-    ParkingLot(ISpotAllocationStrategy spotAllocationStrategy){
-        this.parkingSpots = new ArrayList<>();
+    List<Floor> floors;
+    public ParkingLot(ISpotAllocationStrategy spotAllocationStrategy){
         this.spotAllocationStrategy = spotAllocationStrategy;
-    }
-    void addSpot(ParkingSpot parkingSpot){
-        this.parkingSpots.add(parkingSpot);
+        this.floors = new ArrayList<>();
     }
 
-    void removeSpot(ParkingSpot parkingSpot){
-        this.parkingSpots.remove(parkingSpot);
+    public ParkingLot(ISpotAllocationStrategy spotAllocationStrategy,List<Floor> floors){
+        this.spotAllocationStrategy = spotAllocationStrategy;
+        this.floors = floors;
+    }
+
+    void addFloor(Floor floor){
+        this.floors.add(floor);
+    }
+
+    void removeFloor(Floor floor){
+        this.floors.remove(floor);
     }
 
     public ParkingSpot park(Vehicle vehicle) {
-        ParkingSpot parkingSpot = spotAllocationStrategy.findSpot(vehicle, parkingSpots);
+        ParkingSpot parkingSpot = spotAllocationStrategy.findSpot(
+                    vehicle.getVehicleType(), floors);
         if(parkingSpot==null) throw new RuntimeException("No parking spot found");
         parkingSpot.allocate(vehicle);
         return parkingSpot;
