@@ -13,15 +13,16 @@ public abstract class ParkingSpot {
     ParkingSpot(){}
     void allocate(Vehicle vehicle){
         if(vehicle.getVehicleType()==vehicleType){
-            this.vehicle = vehicle;
-            this.isFree = false;
+            setVehicle(vehicle);
+            setFree(false);
         }
         throw new UnsupportedOperationException("Vehicle Type mismatch");
     }
 
     void release(){
         if(!isFree){
-            vehicle = null;
+            setVehicle(null);
+            setFree(true);
         }
     }
 }

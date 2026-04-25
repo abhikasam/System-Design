@@ -1,12 +1,16 @@
 package src.main.java.org.example.modals;
 
+import src.main.java.org.example.strategy.ISpotAllocationStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingLot {
+    ISpotAllocationStrategy spotAllocationStrategy;
     List<ParkingSpot> parkingSpots;
-    ParkingLot(){
+    ParkingLot(ISpotAllocationStrategy spotAllocationStrategy){
         this.parkingSpots = new ArrayList<>();
+        this.spotAllocationStrategy = spotAllocationStrategy;
     }
     void addSpot(ParkingSpot parkingSpot){
         this.parkingSpots.add(parkingSpot);
@@ -16,7 +20,13 @@ public class ParkingLot {
         this.parkingSpots.remove(parkingSpot);
     }
 
-    public Ticket park(Vehicle vehicle) {
+    Ticket issueTicket(Vehicle vehicle, ParkingSpot parkingSpot){
         return new Ticket();
+    }
+
+    public Ticket park(Vehicle vehicle) {
+        ParkingSpot parkingSpot = spotAllocationStrategy.allocate(vehicle, parkingSpots);
+        if(parkingSpot==null) throw new RuntimeException("No parking spot found");
+        return issueTicket(vehicle, parkingSpot);
     }
 }

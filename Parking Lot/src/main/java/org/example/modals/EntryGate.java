@@ -6,7 +6,7 @@ public class EntryGate {
     String id;
     ParkingLot parkingLot;
     EntryGate(ParkingLot parkingLot){
-        this.parkingLot = new ParkingLot();
+        this.parkingLot = parkingLot;
     }
     Ticket park(Vehicle vehicle){
         return parkingLot.park(vehicle);

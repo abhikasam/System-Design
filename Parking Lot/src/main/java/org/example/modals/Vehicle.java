@@ -15,7 +15,7 @@ public abstract class Vehicle {
     }
 
     Vehicle(String vehicleNumber,VehicleType vehicleType){
-        this.vehicleNumber = vehicleNumber;
-        this.vehicleType = vehicleType;
+        setVehicleNumber(vehicleNumber);
+        setVehicleType(vehicleType);
     }
 }
