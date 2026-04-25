@@ -1,12 +1,10 @@
-package src.main.java.org.example.modals;
+package src.main.java.org.example.modals.ParkingSpot;
 
 import src.main.java.org.example.enums.VehicleType;
 
-import java.util.UUID;
-
-public class SmallParkingSpot extends ParkingSpot{
+public class SmallParkingSpot extends ParkingSpot {
     public SmallParkingSpot(){
-        this.setId(UUID.randomUUID().toString());
+        super();
         this.setPrize(20);
         this.setVehicleType(VehicleType.TWO_WHEELER);
     }

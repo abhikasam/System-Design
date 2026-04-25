@@ -1,7 +1,10 @@
-package src.main.java.org.example.modals;
+package src.main.java.org.example.modals.ParkingSpot;
 
 import lombok.Data;
 import src.main.java.org.example.enums.VehicleType;
+import src.main.java.org.example.modals.vehicle.Vehicle;
+
+import java.util.UUID;
 
 @Data
 public abstract class ParkingSpot {
@@ -10,8 +13,10 @@ public abstract class ParkingSpot {
     VehicleType vehicleType;
     boolean isFree;
     int prize;
-    ParkingSpot(){}
-    void allocate(Vehicle vehicle){
+    ParkingSpot(){
+        this.setId(UUID.randomUUID().toString());
+    }
+    public void allocate(Vehicle vehicle){
         if(vehicle.getVehicleType()==vehicleType){
             setVehicle(vehicle);
             setFree(false);
@@ -19,7 +24,7 @@ public abstract class ParkingSpot {
         throw new UnsupportedOperationException("Vehicle Type mismatch");
     }
 
-    void release(){
+    public void release(){
         if(!isFree){
             setVehicle(null);
             setFree(true);

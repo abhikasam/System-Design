@@ -1,7 +1,5 @@
-package src.main.java.org.example.modals;
+package src.main.java.org.example.modals.vehicle;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import src.main.java.org.example.enums.VehicleType;
 
 public class FourWheelerVehicle extends Vehicle {

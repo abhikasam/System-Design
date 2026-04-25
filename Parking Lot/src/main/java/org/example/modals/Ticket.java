@@ -1,25 +1,28 @@
 package src.main.java.org.example.modals;
 
+import src.main.java.org.example.enums.VehicleType;
+import src.main.java.org.example.modals.ParkingSpot.ParkingSpot;
+import src.main.java.org.example.modals.vehicle.Vehicle;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class Ticket {
-    private final String id;
-    Vehicle vehicle;
-    ParkingSpot parkingSpot;
-    LocalDateTime entryTime;
-    LocalDateTime exitTime;
-    Ticket(){
-        id = UUID.randomUUID().toString();
-    }
-    Ticket(Vehicle vehicle,ParkingSpot parkingSpot){
-        this.id = UUID.randomUUID().toString();
-        this.vehicle = vehicle;
-        this.parkingSpot = parkingSpot;
-        entryTime = LocalDateTime.now();
-        exitTime = entryTime.plusMinutes(60);
-    }
-    String getId(){
-        return this.id;
+public record Ticket (
+    String id,
+    Vehicle vehicle,
+    ParkingSpot parkingSpot,
+    LocalDateTime entryTime,
+    LocalDateTime exitTime,
+    VehicleType vehicleType,
+    int fee
+){
+    public static Ticket issue(Vehicle vehicle,ParkingSpot parkingSpot){
+        return new Ticket(
+                UUID.randomUUID().toString(),
+                vehicle,parkingSpot,
+                LocalDateTime.now(),
+                LocalDateTime.now().plusMinutes(60),
+                parkingSpot.getVehicleType(),
+                parkingSpot.getPrize());
     }
 }

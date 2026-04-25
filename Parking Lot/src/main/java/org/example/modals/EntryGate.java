@@ -1,6 +1,6 @@
 package src.main.java.org.example.modals;
 
-import src.main.java.org.example.enums.VehicleType;
+import src.main.java.org.example.modals.vehicle.Vehicle;
 
 public class EntryGate {
     String id;

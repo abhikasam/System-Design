@@ -1,10 +1,10 @@
-package src.main.java.org.example.strategy;
+package src.main.java.org.example.strategy.parkingspot;
 
 import src.main.java.org.example.enums.VehicleType;
-import src.main.java.org.example.modals.MediumParkingSpot;
-import src.main.java.org.example.modals.ParkingSpot;
-import src.main.java.org.example.modals.SmallParkingSpot;
-import src.main.java.org.example.modals.Vehicle;
+import src.main.java.org.example.modals.ParkingSpot.MediumParkingSpot;
+import src.main.java.org.example.modals.ParkingSpot.ParkingSpot;
+import src.main.java.org.example.modals.ParkingSpot.SmallParkingSpot;
+import src.main.java.org.example.modals.vehicle.Vehicle;
 
 import java.util.List;
 

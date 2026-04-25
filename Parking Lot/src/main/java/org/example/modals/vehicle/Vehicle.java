@@ -1,8 +1,6 @@
-package src.main.java.org.example.modals;
+package src.main.java.org.example.modals.vehicle;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import src.main.java.org.example.enums.VehicleType;
 
 @Data
