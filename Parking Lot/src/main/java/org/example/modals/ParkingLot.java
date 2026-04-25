@@ -15,4 +15,8 @@ public class ParkingLot {
     void removeSpot(ParkingSpot parkingSpot){
         this.parkingSpots.remove(parkingSpot);
     }
+
+    public Ticket park(Vehicle vehicle) {
+        return new Ticket();
+    }
 }
