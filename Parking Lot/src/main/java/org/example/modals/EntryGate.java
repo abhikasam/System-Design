@@ -13,8 +13,8 @@ public class EntryGate {
     }
 
 
-    Ticket park(Vehicle vehicle){
-        ParkingSpot parkingSpot = parkingLot.park(vehicle);
+    public Ticket park(Vehicle vehicle){
+        ParkingSpot parkingSpot = parkingLot.park(vehicle,this);
         return ticketService.generateTicket(parkingSpot);
     }
 }

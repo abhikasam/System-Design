@@ -16,7 +16,7 @@ public class ExitGate {
         this.paymentStrategy = paymentStrategy;
         this.ticketService = ticketService;
     }
-    Bill release(String id){
+    public Bill release(String id){
         Ticket ticket = ticketService.getTicket(id);
         parkingLot.release(ticket.parkingSpot);
         ticket.setExitTime(LocalDateTime.now());

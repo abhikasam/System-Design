@@ -28,9 +28,9 @@ public class ParkingLot {
         this.floors.remove(floor);
     }
 
-    public ParkingSpot park(Vehicle vehicle) {
+    public ParkingSpot park(Vehicle vehicle,EntryGate entryGate) {
         ParkingSpot parkingSpot = spotAllocationStrategy.findSpot(
-                    vehicle.getVehicleType(), floors);
+                    vehicle.getVehicleType(), floors, entryGate);
         if(parkingSpot==null) throw new RuntimeException("No parking spot found");
         parkingSpot.allocate(vehicle);
         return parkingSpot;

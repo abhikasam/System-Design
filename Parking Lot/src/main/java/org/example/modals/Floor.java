@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Floor {
-    List<ParkingSpot> parkingSpots;
+    static int id;
+    public List<ParkingSpot> parkingSpots;
     public Floor(){
         this.parkingSpots = new ArrayList<>();
     }
