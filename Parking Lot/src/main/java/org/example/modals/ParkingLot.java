@@ -21,7 +21,8 @@ public class ParkingLot {
     }
 
     Ticket issueTicket(Vehicle vehicle, ParkingSpot parkingSpot){
-        return new Ticket();
+        parkingSpot.allocate(vehicle);
+        return new Ticket(vehicle,parkingSpot);
     }
 
     public Ticket park(Vehicle vehicle) {
