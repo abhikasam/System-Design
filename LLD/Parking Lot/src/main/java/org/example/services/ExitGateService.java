@@ -10,7 +10,7 @@ public class ExitGateService {
     public ExitGateService(List<ExitGate> exitGates){
         this.exitGates = exitGates;
     }
-    Bill exit(String id,ExitGate gate){
+    public Bill exit(String id, ExitGate gate){
         return gate.exit(id);
     }
 }

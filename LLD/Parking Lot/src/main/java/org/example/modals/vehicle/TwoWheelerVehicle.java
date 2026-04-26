@@ -6,7 +6,7 @@ public class TwoWheelerVehicle extends Vehicle {
     TwoWheelerVehicle(){
         super(VehicleType.TWO_WHEELER);
     }
-    TwoWheelerVehicle(String vehicleNumber){
+    public TwoWheelerVehicle(String vehicleNumber){
         super(vehicleNumber,VehicleType.TWO_WHEELER);
     }
 }

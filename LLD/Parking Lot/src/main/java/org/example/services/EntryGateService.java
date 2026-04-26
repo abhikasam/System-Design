@@ -12,7 +12,7 @@ public class EntryGateService {
         this.entryGateList = entryGates;
     }
 
-    Ticket park(Vehicle vehicle,EntryGate entryGate){
+    public Ticket park(Vehicle vehicle, EntryGate entryGate){
         return entryGate.park(vehicle);
     }
 }

@@ -1,17 +1,49 @@
 package org.example;
 
+import org.example.modals.*;
+import org.example.modals.ParkingSpot.LargeParkingSpot;
+import org.example.modals.ParkingSpot.MediumParkingSpot;
+import org.example.modals.ParkingSpot.SmallParkingSpot;
+import org.example.modals.vehicle.TwoWheelerVehicle;
+import org.example.modals.vehicle.Vehicle;
+import org.example.services.EntryGateService;
+import org.example.services.ExitGateService;
+import org.example.services.ITicketService;
+import org.example.services.TicketService;
+import org.example.strategy.parkingspot.DefaultAllocationStrategy;
+import org.example.strategy.parkingspot.ISpotAllocationStrategy;
+import org.example.strategy.payment.CashPaymentStrategy;
+import org.example.strategy.payment.IPaymentStrategy;
+import org.example.strategy.price.IPricingStrategy;
+import org.example.strategy.price.PricingStrategy;
+
+import java.util.List;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+        IPricingStrategy pricingStrategy = new PricingStrategy();
+        IPaymentStrategy paymentStrategy = new CashPaymentStrategy();
+        ISpotAllocationStrategy spotAllocationStrategy = new DefaultAllocationStrategy();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
+        ITicketService ticketService = new TicketService();
+
+        Floor floor = new Floor();
+        for(int i=0;i<5;i++){
+            floor.parkingSpots.add(new SmallParkingSpot());
+            floor.parkingSpots.add(new MediumParkingSpot());
+            floor.parkingSpots.add(new LargeParkingSpot());
         }
+        ParkingLot parkingLot = new ParkingLot(spotAllocationStrategy, List.of(floor));
+        EntryGate entryGate = new EntryGate(parkingLot, ticketService);
+        ExitGate exitGate = new ExitGate(parkingLot, paymentStrategy, ticketService, pricingStrategy);
+
+        EntryGateService entryGateService = new EntryGateService(List.of(entryGate));
+        ExitGateService exitGateService = new ExitGateService(List.of(exitGate));
+
+        Vehicle vehicle = new TwoWheelerVehicle("TS 19AH 1976");
+        Ticket ticket = entryGateService.park(vehicle,entryGate);
+        exitGateService.exit(ticket.getId(),exitGate);
     }
 }
