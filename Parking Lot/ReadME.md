@@ -44,5 +44,9 @@ It handles a list of entry gates.
 <img width="965" height="325" alt="image" src="https://github.com/user-attachments/assets/a3f013d7-6023-41f5-af9e-41e2556fa585" />
 
 
+Final entity diagram will look like this
+<img width="1708" height="1218" alt="image" src="https://github.com/user-attachments/assets/5bf58328-5e86-49de-a989-566260b0df16" />
+
+
 
 
