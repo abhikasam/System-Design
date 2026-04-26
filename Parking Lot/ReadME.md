@@ -41,7 +41,7 @@ EntryGateService :
 when a user enters through a entry gate, it will let the entry gate to park the vehicle by navigating to parking lot.
 It handles a list of entry gates.
 
-<img width="1016" height="389" alt="image" src="https://github.com/user-attachments/assets/b023fe55-0b0e-4add-b0cd-f89fd0f8baf1" />
+<img width="965" height="325" alt="image" src="https://github.com/user-attachments/assets/a3f013d7-6023-41f5-af9e-41e2556fa585" />
 
 
 
