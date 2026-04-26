@@ -1,7 +1,7 @@
-package src.main.java.org.example.modals.ParkingSpot;
+package org.example.modals.ParkingSpot;
 
-import src.main.java.org.example.enums.ParkingSpotType;
-import src.main.java.org.example.enums.VehicleType;
+import org.example.enums.ParkingSpotType;
+import org.example.enums.VehicleType;
 
 public class SmallParkingSpot extends ParkingSpot {
     public SmallParkingSpot(){

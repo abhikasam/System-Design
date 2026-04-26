@@ -1,18 +1,21 @@
-package src.main.java.org.example.modals;
+package org.example.modals;
 
-import src.main.java.org.example.modals.ParkingSpot.ParkingSpot;
-import src.main.java.org.example.modals.vehicle.Vehicle;
-import src.main.java.org.example.strategy.parkingspot.ISpotAllocationStrategy;
+import org.example.modals.ParkingSpot.ParkingSpot;
+import org.example.modals.vehicle.Vehicle;
+import org.example.services.ITicketService;
+import org.example.strategy.parkingspot.ISpotAllocationStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingLot {
     ISpotAllocationStrategy spotAllocationStrategy;
+    ITicketService ticketService;
     List<Floor> floors;
-    public ParkingLot(ISpotAllocationStrategy spotAllocationStrategy){
+    public ParkingLot(ISpotAllocationStrategy spotAllocationStrategy,ITicketService ticketService){
         this.spotAllocationStrategy = spotAllocationStrategy;
         this.floors = new ArrayList<>();
+        this.ticketService = ticketService;
     }
 
     public ParkingLot(ISpotAllocationStrategy spotAllocationStrategy,List<Floor> floors){
@@ -28,12 +31,12 @@ public class ParkingLot {
         this.floors.remove(floor);
     }
 
-    public ParkingSpot park(Vehicle vehicle,EntryGate entryGate) {
+    public Ticket park(Vehicle vehicle,EntryGate entryGate) {
         ParkingSpot parkingSpot = spotAllocationStrategy.findSpot(
                     vehicle.getVehicleType(), floors, entryGate);
         if(parkingSpot==null) throw new RuntimeException("No parking spot found");
         parkingSpot.allocate(vehicle);
-        return parkingSpot;
+        return ticketService.generateTicket(parkingSpot);
     }
 
     public void release(ParkingSpot parkingSpot){

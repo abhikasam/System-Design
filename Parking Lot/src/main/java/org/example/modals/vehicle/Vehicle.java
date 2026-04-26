@@ -1,7 +1,7 @@
-package src.main.java.org.example.modals.vehicle;
+package org.example.modals.vehicle;
 
 import lombok.Data;
-import src.main.java.org.example.enums.VehicleType;
+import org.example.enums.VehicleType;
 
 @Data
 public abstract class Vehicle {

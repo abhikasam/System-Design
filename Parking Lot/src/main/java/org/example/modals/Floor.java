@@ -1,6 +1,6 @@
-package src.main.java.org.example.modals;
+package org.example.modals;
 
-import src.main.java.org.example.modals.ParkingSpot.ParkingSpot;
+import org.example.modals.ParkingSpot.ParkingSpot;
 
 import java.util.ArrayList;
 import java.util.List;

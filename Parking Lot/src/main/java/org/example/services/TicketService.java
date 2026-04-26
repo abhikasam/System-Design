@@ -1,8 +1,8 @@
-package src.main.java.org.example.services;
+package org.example.services;
 
-import src.main.java.org.example.modals.ParkingSpot.ParkingSpot;
-import src.main.java.org.example.modals.Ticket;
-import src.main.java.org.example.modals.vehicle.Vehicle;
+import org.example.modals.ParkingSpot.ParkingSpot;
+import org.example.modals.Ticket;
+import org.example.modals.vehicle.Vehicle;
 
 import java.util.HashMap;
 import java.util.Map;

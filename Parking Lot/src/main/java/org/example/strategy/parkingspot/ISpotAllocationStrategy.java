@@ -1,9 +1,9 @@
-package src.main.java.org.example.strategy.parkingspot;
+package org.example.strategy.parkingspot;
 
-import src.main.java.org.example.enums.VehicleType;
-import src.main.java.org.example.modals.EntryGate;
-import src.main.java.org.example.modals.Floor;
-import src.main.java.org.example.modals.ParkingSpot.ParkingSpot;
+import org.example.enums.VehicleType;
+import org.example.modals.EntryGate;
+import org.example.modals.Floor;
+import org.example.modals.ParkingSpot.ParkingSpot;
 
 import java.util.List;
 

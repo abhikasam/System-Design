@@ -1,9 +1,9 @@
-package src.main.java.org.example.modals;
+package org.example.modals;
 
-import src.main.java.org.example.modals.ParkingSpot.ParkingSpot;
-import src.main.java.org.example.modals.vehicle.Vehicle;
-import src.main.java.org.example.services.ITicketService;
-import src.main.java.org.example.strategy.payment.IPaymentStrategy;
+import org.example.modals.ParkingSpot.ParkingSpot;
+import org.example.modals.vehicle.Vehicle;
+import org.example.services.ITicketService;
+import org.example.strategy.payment.IPaymentStrategy;
 
 import java.time.LocalDateTime;
 

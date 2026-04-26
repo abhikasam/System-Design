@@ -1,4 +1,4 @@
-package src.main.java.org.example.modals;
+package org.example.modals;
 
 import java.time.LocalDateTime;
 

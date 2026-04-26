@@ -1,9 +1,9 @@
-package src.main.java.org.example.modals;
+package org.example.modals;
 
 import lombok.Data;
-import src.main.java.org.example.enums.VehicleType;
-import src.main.java.org.example.modals.ParkingSpot.ParkingSpot;
-import src.main.java.org.example.modals.vehicle.Vehicle;
+import org.example.enums.VehicleType;
+import org.example.modals.ParkingSpot.ParkingSpot;
+import org.example.modals.vehicle.Vehicle;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

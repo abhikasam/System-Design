@@ -1,7 +1,7 @@
-package src.main.java.org.example.services;
+package org.example.services;
 
-import src.main.java.org.example.modals.Bill;
-import src.main.java.org.example.modals.ExitGate;
+import org.example.modals.Bill;
+import org.example.modals.ExitGate;
 
 import java.util.List;
 
