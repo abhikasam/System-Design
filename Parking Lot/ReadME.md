@@ -35,13 +35,22 @@ Functions :
 5. Payment.
 
 Services : 
-EntryGateService, ExitGateService.
+EntryGateService, ExitGateService, TicketService
 
-EntryGateService : 
-when a user enters through a entry gate, it will let the entry gate to park the vehicle by navigating to parking lot.
-It handles a list of entry gates.
+Strategies : 
+PaymentStrategy, PricingStrategy, SpotAllocationStrategy.
 
-<img width="965" height="325" alt="image" src="https://github.com/user-attachments/assets/a3f013d7-6023-41f5-af9e-41e2556fa585" />
+Record : 
+Bill
+
+Abstract Classes :
+ParkingSpot, Vehicle 
+
+Enums : 
+ParkingSpotType, VehicleType
+
+Classes :
+ParkingLot, Ticket, Floor, EntityGate, ExitGate
 
 
 Final entity diagram will look like this
@@ -50,3 +59,15 @@ Final entity diagram will look like this
 
 
 
+Final takeaways :
+1. ParkingLot creates ticket, but doesn't need to handle ticketService.
+2. EntryGate has to handle ticket saving.
+3. ExitGate has to handle ticket removing and billing.
+4. ParkingLot is the center of the functionality, but it only contains SpotAllocationStrategy and floors.
+5. SpotAllocationStrategy should depend on VehicleType not Vehicle (atleast for simple architecture).
+6. EntryGateService and ExitGateService are added as an extension to the problem of single entry and exit, and we have solved it efficiently by mapping only entry and exit gates into it, and bypassing the functionality to their respecitve gates.
+7. Ticket doesn't need to store vehicle or vehicleType, it is ok to store parkingSpotType, and we can use that for price calculation.
+8. Price shouldn't present in the ParkingSpot, it is final calculatable based on hours spent for the vehicle, and pricingStrategy.
+9. PaymentService don't generate bill, it processes the bill.
+10. Bill is created intentionally as a record, as it won't change later.
+11. Payment, Pricing, Spot Allocation all are strategies, but ticket, entry gate and exit gate are services, because the main theme of them is not strategy, it is functionality, and there is no need of strategy for them.
