@@ -11,7 +11,6 @@ public class ExitGateService {
         this.exitGates = exitGates;
     }
     Bill exit(String id,ExitGate gate){
-        return gate.release(id);
+        return gate.exit(id);
     }
-
 }

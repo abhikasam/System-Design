@@ -8,5 +8,5 @@ import org.example.modals.ParkingSpot.ParkingSpot;
 import java.util.List;
 
 public interface ISpotAllocationStrategy {
-    ParkingSpot findSpot(VehicleType vehicleType, List<Floor> floors, EntryGate entryGate);
+    ParkingSpot findSpot(VehicleType vehicleType, List<Floor> floors);
 }

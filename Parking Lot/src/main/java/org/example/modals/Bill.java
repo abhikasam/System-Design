@@ -1,12 +1,15 @@
 package org.example.modals;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public record Bill (
         LocalDateTime entryTime,
         LocalDateTime exitTime,
-        int fee) {
-    public static Bill create(Ticket ticket){
-        return new Bill(ticket.entryTime,LocalDateTime.now(),ticket.parkingSpot.getPrize());
+        long fee) {
+    public static Bill create(Ticket ticket,int price){
+        LocalDateTime endTime = LocalDateTime.now();
+        long hours = ChronoUnit.HOURS.between(ticket.entryTime, endTime);
+        return new Bill(ticket.entryTime,endTime,price*hours);
     }
 }

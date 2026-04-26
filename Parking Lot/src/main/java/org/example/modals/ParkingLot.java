@@ -10,12 +10,10 @@ import java.util.List;
 
 public class ParkingLot {
     ISpotAllocationStrategy spotAllocationStrategy;
-    ITicketService ticketService;
     List<Floor> floors;
-    public ParkingLot(ISpotAllocationStrategy spotAllocationStrategy,ITicketService ticketService){
+    public ParkingLot(ISpotAllocationStrategy spotAllocationStrategy){
         this.spotAllocationStrategy = spotAllocationStrategy;
         this.floors = new ArrayList<>();
-        this.ticketService = ticketService;
     }
 
     public ParkingLot(ISpotAllocationStrategy spotAllocationStrategy,List<Floor> floors){
@@ -31,15 +29,15 @@ public class ParkingLot {
         this.floors.remove(floor);
     }
 
-    public Ticket park(Vehicle vehicle,EntryGate entryGate) {
+    public Ticket park(Vehicle vehicle) {
         ParkingSpot parkingSpot = spotAllocationStrategy.findSpot(
-                    vehicle.getVehicleType(), floors, entryGate);
+                    vehicle.getVehicleType(), floors);
         if(parkingSpot==null) throw new RuntimeException("No parking spot found");
         parkingSpot.allocate(vehicle);
-        return ticketService.generateTicket(parkingSpot);
+        return new Ticket(parkingSpot);
     }
 
-    public void release(ParkingSpot parkingSpot){
-        parkingSpot.release();
+    public void release(Ticket ticket){
+        ticket.getParkingSpot().release();
     }
 }

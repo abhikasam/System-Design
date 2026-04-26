@@ -11,15 +11,13 @@ import java.util.UUID;
 public abstract class ParkingSpot {
     String id;
     Vehicle vehicle;
-    VehicleType vehicleType;
     ParkingSpotType parkingSpotType;
     boolean isFree;
-    int prize;
     ParkingSpot(){
         this.setId(UUID.randomUUID().toString());
     }
     public void allocate(Vehicle vehicle){
-        if(vehicle.getVehicleType()==vehicleType){
+        if(vehicle.getVehicleType()==this.vehicle.getVehicleType()){
             setVehicle(vehicle);
             setFree(false);
         }

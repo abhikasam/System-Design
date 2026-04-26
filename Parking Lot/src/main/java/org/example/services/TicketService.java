@@ -13,10 +13,8 @@ public class TicketService implements ITicketService{
         ticketMap = new HashMap<>();
     }
     @Override
-    public Ticket generateTicket(ParkingSpot parkingSpot) {
-        Ticket ticket = new Ticket(parkingSpot);
+    public void save(Ticket ticket) {
         ticketMap.put(ticket.getId(), ticket);
-        return ticket;
     }
 
     @Override

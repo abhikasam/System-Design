@@ -7,9 +7,10 @@ import org.example.modals.vehicle.Vehicle;
 import java.util.Map;
 
 public interface ITicketService {
-    Ticket generateTicket(ParkingSpot parkingSpot);
 
     Ticket getTicket(String id);
 
     void remove(String id);
+
+    void save(Ticket ticket);
 }

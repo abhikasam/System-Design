@@ -5,7 +5,6 @@ import org.example.modals.Ticket;
 
 public class CashPaymentStrategy implements IPaymentStrategy {
     @Override
-    public Bill process(Ticket ticket) {
-        return Bill.create(ticket);
+    public void pay(Bill bill) {
     }
 }

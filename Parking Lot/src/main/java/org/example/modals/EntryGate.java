@@ -7,12 +7,16 @@ import org.example.modals.ParkingLot;
 
 public class EntryGate {
     ParkingLot parkingLot;
-    public EntryGate(ParkingLot parkingLot){
+    ITicketService ticketService;
+    public EntryGate(ParkingLot parkingLot,ITicketService ticketService){
         this.parkingLot = parkingLot;
+        this.ticketService = ticketService;
     }
 
 
     public Ticket park(Vehicle vehicle){
-       return parkingLot.park(vehicle,this);
+        Ticket ticket = parkingLot.park(vehicle);
+        ticketService.save(ticket);
+        return  ticket;
     }
 }

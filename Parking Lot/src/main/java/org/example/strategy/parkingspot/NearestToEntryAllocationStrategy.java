@@ -17,7 +17,7 @@ public class NearestToEntryAllocationStrategy implements ISpotAllocationStrategy
     //every spot should have i,j coordinates.
     //in parking lot along with parking spots we have to maintain road as way, so we can implement rat in maze.
     //we have to find free cells.
-    public ParkingSpot findSpot(VehicleType vehicleType, List<Floor> floors, EntryGate entryGate) {
+    public ParkingSpot findSpot(VehicleType vehicleType, List<Floor> floors) {
         if(vehicleType== VehicleType.TWO_WHEELER)
             return new SmallParkingSpot();
         if(vehicleType == VehicleType.FOUR_WHEELER)
