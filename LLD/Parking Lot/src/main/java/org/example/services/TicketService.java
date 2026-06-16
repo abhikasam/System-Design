@@ -6,11 +6,13 @@ import org.example.modals.vehicle.Vehicle;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 public class TicketService implements ITicketService{
-    private final Map<String, Ticket> ticketMap;
+    private final ConcurrentMap<String, Ticket> ticketMap;
     public TicketService(){
-        ticketMap = new HashMap<>();
+        ticketMap = new ConcurrentHashMap<>();
     }
     @Override
     public void save(Ticket ticket) {
