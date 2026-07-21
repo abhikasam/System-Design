@@ -2,7 +2,6 @@ package org.example.modals;
 
 import org.example.modals.ParkingSpot.ParkingSpot;
 import org.example.modals.vehicle.Vehicle;
-import org.example.services.ITicketService;
 import org.example.strategy.parkingspot.ISpotAllocationStrategy;
 
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ public class ParkingLot {
         this.floors.remove(floor);
     }
 
-    public Ticket park(Vehicle vehicle) {
+    public synchronized Ticket park(Vehicle vehicle) {
         ParkingSpot parkingSpot = spotAllocationStrategy.findSpot(
                     vehicle.getVehicleType(), floors);
         if(parkingSpot==null) throw new RuntimeException("No parking spot found");
@@ -37,7 +36,7 @@ public class ParkingLot {
         return new Ticket(parkingSpot);
     }
 
-    public void release(Ticket ticket){
+    public synchronized void release(Ticket ticket){
         ticket.getParkingSpot().release();
     }
 }
